@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ide Web</title>
+  <script src="https://cdn.jsdelivr.net/npm/js-base64@3.7.2/base64.min.js"></script>
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+</head>
+<body>
+  <script>
+    function runCode() {
+      let text = document.getElementById("textCode").value;
+      let language = document.getElementById("language").value;
+      let text_decoded = Base64.encodeURI(text);
+
+      fetch('http://127.0.0.1:4000/run/' + language + '/?code=' + text_decoded)
+      .then(response => response.json())
+      .then(json => document.getElementById("textResult").value = json.stdout);
+
+      console.log(text);
+      console.log(text_decoded);
+      
+    }
+  </script>
+
+  <h1>Ide Web</h1>
+
+  <div class="panel-container">
+
+    <div class="child-element">
+      <h2>Código</h2>
+      <textarea id="textCode" name="textCode" rows=10" cols="50" placeholder="Escribe tu cádigo acá..."></textarea>
+      <button id="btnRun" type="button" name="btnRun" onclick="runCode()">Ejecutar</button>
+      <select name="languages" id="language">
+        <option value="python">Python</option>
+        <option value="cpp">C++</option>
+      </select>
+    </div>
+    
+    <div class="child-element">
+      <h2>Resultado</h2>
+      <textarea id="textResult" name="textResult" rows=10" cols="50" placeholder="Resultado..."></textarea>
+    </div>
+    
+  </div>
+  
+</body>
+</html>

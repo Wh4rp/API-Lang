@@ -1,7 +1,11 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 from runners import PythonRunner, CppRunner
 
 app =  Flask(__name__)
+
+@app.route('/')
+def home():
+   return render_template('index.html')
 
 @app.route('/ping', methods=['GET'])
 def ping():
