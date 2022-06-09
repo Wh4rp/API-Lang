@@ -9,6 +9,11 @@ This aplication is a REST API for run the language:
 python3 app.py
 ```
 
+## Sample page
+On the root `http://localhost:4000/`
+
+![Sample Page](sample_page.gif)
+
 ## Run a code
 
 ### Request
