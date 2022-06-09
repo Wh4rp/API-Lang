@@ -13,7 +13,6 @@ python3 app.py
 
 ### Request
 
-`GET /thing/`
 
     wget http://localhost:4000/run/<language>?code=<code_in_base64_url_safe>&datain=<input_in_base64_url_safe>
 
