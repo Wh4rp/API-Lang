@@ -7,7 +7,7 @@ def dict_status(status):
   """
   return {
     'exit status':status.returncode,
-    'stdout':status.stdout.decode(),
+    'result':status.stdout.decode(),
     'stderr':status.stderr.decode()
   }
 
@@ -17,8 +17,8 @@ def PythonRunner(code, decode=True, datain=None):
   """
   if decode:
     code = base64_decode(code).decode('utf-8')
-  if datain:
-    datain = base64_decode(datain).decode('utf-8')
+    if datain:
+      datain = base64_decode(datain).decode('utf-8')
   
   with open("tmp/python.py", "w+") as f:
     f.write(code)
