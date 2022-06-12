@@ -8,7 +8,7 @@ def dict_status(status):
   return {
     'exit status':status.returncode,
     'result':status.stdout.decode(),
-    'stderr':status.stderr.decode()
+    'error':status.stderr.decode()
   }
 
 def PythonRunner(code, decode=True, datain=None):

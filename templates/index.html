@@ -17,7 +17,7 @@
 
       fetch('http://127.0.0.1:4000/run/' + language + '/?code=' + text_decoded)
       .then(response => response.json())
-      .then(json => document.getElementById("textResult").value = json.stdout);
+      .then(json => document.getElementById("textResult").value = json.result);
 
       console.log(text);
       console.log(text_decoded);
